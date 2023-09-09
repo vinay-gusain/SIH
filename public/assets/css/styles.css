@@ -1,0 +1,542 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Poppins:wght@400;500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(195, 100%, 30%);
+  --gradient-color: linear-gradient(90deg,
+                    hsl(210, 55%, 20%),
+                    hsl(192, 62%, 25%));
+  --title-color: hsl(210, 52%, 20%);
+  --text-color: hsl(210, 24%, 15%);
+  --white-color: #fff;
+  --body-color: hsl(210, 55%, 85%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --second-font: "Lora", serif;
+  --biggest-font-size: 2.25rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.icon {
+  width: 1.25rem;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--body-color);
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo{
+  width: 36px;
+}
+
+.nav__toggle,
+.nav__close{
+  display: inline-flex;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1023px){
+  .nav__menu{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: var(--body-color);
+    width: 100%;
+    box-shadow: 0 1px 16px hsla(210, 55%, 24%, .1);
+    padding-block: 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    transition: top .4s;
+  }
+}
+
+
+.nav__list{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 2rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  transition: color .3s;
+}
+
+.nav__link:hover{
+  color: var(--first-color);
+}
+
+.nav__buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: .75rem;
+}
+
+.nav__button-login,
+.nav__button-signin{
+  display: inline-block;
+  color: var(--title-color);
+}
+
+.nav__button-signin{
+  background-color: hsla(0, 0%, 100%, .3);
+  padding: .75rem 2.5rem;
+  border: 2px solid var(--title-color);
+  border-radius: .75rem;
+}
+
+.nav__close{
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+/* Show menu */
+.show-menu{
+  top: 0;
+}
+
+/* Change background header */
+.bg-header{
+  box-shadow: 0 1px 16px hsla(210, 55%, 24%, .12);
+}
+
+/*=============== HOME ===============*/
+.home {
+  position: relative;
+}
+
+.home__container{
+  padding-top: 8rem;
+}
+
+.home__data{
+  display: grid;
+  row-gap: .5rem;
+}
+
+.home__subtitle{
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  letter-spacing: 3px;
+}
+
+.home__title{
+  font-size: var(--biggest-font-size);
+  font-family: var(--second-font);
+  color: var(--title-color);
+}
+
+.home__description{
+  margin-bottom: 2.5rem;
+}
+
+.home__button{
+  display: inline-block;
+  background: var(--gradient-color);
+  color: var(--white-color);
+  width: max-content;
+  padding: 1rem 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+}
+
+
+/*--==================== LOCATE ====================*/
+.locate__container,
+.credits__container,
+.redeem__container{
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+}
+.locate__title,
+.credits__title,
+.redeem__title{
+  font-family: var(--second-font);
+  font-size: 2.5rem;
+  padding-bottom: 15px;
+}
+.location__label,
+.credits__label{
+  font-size: 1rem;
+}
+.location__input,
+.credits__input{
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 5px;
+  width: 40%;
+}
+.locate__button-findme,
+.locate__button-search {
+  font-family: var(--font-regular);
+  border-style: none;
+  display: inline-block;
+  cursor: pointer;
+  width: max-content;
+  padding: .5rem 1rem;
+  border-radius: .75rem;
+  box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+  margin-top: 1rem;
+}
+.locate__button-findme{
+  background-color: hsla(0, 0%, 100%, .3);
+  border: 2px solid var(--title-color);
+  border-radius: .75rem;
+}
+.locate__button-search,
+.credits__button-search,
+.credits__button-price{
+  background: var(--gradient-color);
+  color: var(--white-color);
+  margin-left: 1rem;
+}
+
+
+.location__map{
+  margin: 2rem  0rem;
+}
+
+
+/* If we show data in tabular form somehow later
+
+.location__table{
+
+} 
+*/
+
+
+/*=============== CREDITS ===============*/
+/* credits__content div's css styles are similar to locates' div's sytyles, so i merged them */
+.credits__button-search,
+.credits__button-price {
+  font-family: var(--font-regular);
+  border-style: none;
+  display: inline-block;
+  cursor: pointer;
+  width: max-content;
+  padding: .5rem 1rem;
+  border-radius: .75rem;
+  box-shadow: 0 24px 32px hsla(210, 54%, 24%, .3);
+}
+.credits__button-price{
+  margin: 1rem;
+}
+
+/*=============== REDEEM ===============*/
+.redeem__subtitle{
+  margin-bottom: 3rem;
+  width: 90%;
+}
+.card__container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  text-align: center;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  background-color: hsla(0, 0%, 100%, .3);
+  border: 2px solid var(--text-color);
+  border-radius: 1rem;
+  
+}
+.card img{
+  width: 200px;
+  height: 200px;
+  padding-top: 1rem;
+}
+.card h2{
+  padding: 10px 10px 5px 10px;
+}
+.card p{
+  padding: 0rem 1rem;
+}
+
+
+
+
+/*=============== FOOTER ===============*/
+.footer__social-icon{
+  width: 40px;
+  margin: 10px;
+}
+
+.social__icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer__container{
+  width: 100%;
+  height: 200px;
+  background-color: hsla(0, 0%, 100%, .3);
+  margin-top: 10rem;
+}
+
+.footer__text{
+  text-align: center;
+}
+.footer__text p{
+  padding-top: 15px;
+}
+
+.footer__nav{
+  margin: 10px 0;
+}
+
+.footer__nav ul{
+  display: flex;
+  justify-content: center;
+}
+
+.footer__nav ul li a{
+  color: var(--title-color);
+  margin: 5px 20px 5px 20px; 
+  text-decoration: none;
+  font-size: 1rem;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.footer__nav ul li a:hover{
+  opacity: 1;
+}
+
+.footer__copyright{
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.footer__copyright span{
+  font-family: var(--second-font);
+  font-size: 1.1rem;
+}
+
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and(max-width: 350px) {
+  .container{
+    margin-inline: 1rem;
+  }
+
+  .home__title{
+    font-size: 2rem;
+  }
+}
+
+/* for cards */
+@media screen and (min-width: 300px) and (max-width: 950px) {
+  .card__container{
+    flex-direction: column;
+  }
+  .card{
+    width: 70%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+  .card img{
+    width: 100px;
+    height: 100px;
+    padding-top: 1rem;
+  }
+  .location__input,
+  .credits__input{
+    width: 60%;
+  }
+}
+
+/* For taller devices */
+@media screen and (max-width: 500px){
+  .home__container{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+  .footer__nav ul li a{
+    margin: 5px; 
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 480px) {
+  .home__content{
+    max-width: 80vw;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1023px) {
+  .container{
+    margin-left: 5%;
+    margin-right: 5%; 
+  }
+  .nav{
+    height: calc(var(--header-height) + 2rem); 
+    column-gap: 4rem;
+  }
+  .nav__toggle,
+  .nav__close{
+    display: none;
+  }
+
+  .nav__menu{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__list{
+    flex-direction: row;
+    column-gap: 5rem;
+  }
+
+  .nav__buttons{
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+
+  .nav__logo{
+    width: 48px;
+  }
+
+  .home__content{
+    max-width: 80vw;
+  }
+
+  .home__data{
+    row-gap: 1rem;
+  }
+
+  .home__subtitle{
+    font-size: var(--normal-font-size);
+  }
+
+  .home__description{
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 1120px) {
+  .container{
+    margin-inline: auto; 
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .home__container{
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+  }
+
+  ::-webkit-scrollbar{
+    width: .6rem;
+    border-radius: .5rem;
+    background-color: hsl(220, 24%, 15%);
+  }
+}
+
+/* For 2K resolutions (2048 x 1152) */
+@media screen and (min-width: 2048px) {
+  .container{
+    max-width: 1300px;
+  }
+  .home__container{
+    padding-bottom: 10rem;
+    padding-top: 15rem;
+  }
+}
